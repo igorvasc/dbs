@@ -34,7 +34,7 @@ public class TelaInicial {
 			
 			break;
 		case 2:
-			System.out.println("Consulta de saldo selecionado");
+			System.out.println("Consulta de saldo selecionado"); //Extrair em métodos para o código ficar mais legível
 			
 			break;
 		case 3:
@@ -72,7 +72,7 @@ public class TelaInicial {
 		System.out.print("Informe o nome completo: ");
 		usuario.setNome(opcao.next());
 		
-		System.out.println("O número da agência é: 5331");
+		System.out.println("O número da agência é: 5331"); //Número fixo, necessário discutirmos a implementação
 		conta.setAgencia(5331);
 		Random random = new Random();
 		conta.setNumero(random.nextInt(10000));
