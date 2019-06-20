@@ -3,24 +3,30 @@ package br.com.ufg.impressao;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import br.com.ufg.dto.ContaCorrenteDTO;
 import br.com.ufg.dto.UsuarioDTO;
 
 public class TelaInicial {
 	
 	public static void main(String[] args) {
-		System.out.println(" ------------ DBS ------------");
-		
-		System.out.println(" Escolha uma das operações abaixo: ");
-		System.out.println("1 -- Abertura de conta --");
-		System.out.println("2 -- Consultar saldo da conta --");
-		System.out.println("3 -- Consultar saldo das movimentações financeiras --");
-		System.out.println("4 -- Realizar transferência entre contas do mesmo banco --");
-		System.out.println("5 -- Saque --");
-		System.out.println("6 -- Depósito --");
-		System.out.println("0 -- Encerrar --");
-		System.out.print("-------> ");
-		
+		System.out.println("|----------------------------- DBS ------------------------|");
+		System.out.println("|-------------------------- Bem vindo  --------------------|");
+		System.out.println("|----------------------------------------------------------|");
+		System.out.println("|                                                          |");
+		System.out.println("|--------------- Escolha uma das operações abaixo: --------|");
+		System.out.println("|1 -------------------- Abertura de conta -----------------|");
+		System.out.println("|2 ----------------- Consultar saldo da conta -------------|");
+		System.out.println("|3 ---- Consultar saldo das movimentações financeiras -----|");
+		System.out.println("|4 -- Realizar transferência entre contas do mesmo banco --|");
+		System.out.println("|5 ------------------------ Saque -------------------------|");
+		System.out.println("|6 ----------------------- Depósito -----------------------|");
+		System.out.println("|0 ----------------------- Encerrar -----------------------|");
+		System.out.print("|-----------------------------> ");
+
 		UsuarioDTO usuario = new UsuarioDTO();
 		
 		ContaCorrenteDTO conta = new ContaCorrenteDTO();
@@ -70,7 +76,7 @@ public class TelaInicial {
 	private static void case1(UsuarioDTO usuario, ContaCorrenteDTO conta, Scanner opcao) {
 		System.out.println("Abertura de conta selecionado");
 		System.out.print("Informe o nome completo: ");
-		usuario.setNome(opcao.next());
+		conta.setTitular(opcao.next());
 		
 		System.out.println("O número da agência é: 5331"); //Número fixo, necessário discutirmos a implementação
 		conta.setAgencia(5331);
@@ -78,6 +84,23 @@ public class TelaInicial {
 		conta.setNumero(random.nextInt(10000));
 		System.out.println(conta.getNumero());
 		System.out.println(usuario.getNome());
+		
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("dbs");
+		EntityManager em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+
+		try {
+			em.persist(conta);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			System.out.println(" --- Falha ao criar a conta! --- ");
+		}
+		
+		em.close();
+		emf.close();
 	}
 
 }
