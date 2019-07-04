@@ -10,6 +10,7 @@
 
         <!-- Aqui são listadas todas as entidades -->
         <class>br.com.ufg.dto.ContaCorrenteDTO</class>
+        <class>br.com.ufg.dto.MovimentacaoDTO</class>
 
         <properties>    
             <!-- Propriedades JDBC -->

@@ -16,6 +16,24 @@ public class ContaCorrenteDTO {
 	private Integer numero;
 	private Integer agencia;
 	private String titular;
+	private String email;
+	private Integer saldo;
+
+	public Integer getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(Integer saldo) {
+		this.saldo = saldo;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public Integer getId() {
 		return id;
