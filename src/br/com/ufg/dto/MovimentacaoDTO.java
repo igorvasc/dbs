@@ -35,6 +35,16 @@ public class MovimentacaoDTO {
 	@JoinColumn(unique=true)
 	@ManyToOne
 	private ContaCorrenteDTO conta;
+	
+	private String tipoMovimentacao;
+
+	public String getTipoMovimentacao() {
+		return tipoMovimentacao;
+	}
+
+	public void setTipoMovimentacao(String tipoMovimentacao) {
+		this.tipoMovimentacao = tipoMovimentacao;
+	}
 
 	public ContaCorrenteDTO getConta() {
 		return conta;

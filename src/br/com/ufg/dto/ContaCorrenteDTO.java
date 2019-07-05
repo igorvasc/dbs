@@ -10,6 +10,8 @@ import javax.persistence.Table;
 @Table(name = "contacorrente")
 public class ContaCorrenteDTO {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -17,13 +19,14 @@ public class ContaCorrenteDTO {
 	private Integer agencia;
 	private String titular;
 	private String email;
-	private Integer saldo;
+	private Double saldo;
 
-	public Integer getSaldo() {
+
+	public Double getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(Integer saldo) {
+	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
 
